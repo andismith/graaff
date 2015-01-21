@@ -1,0 +1,19 @@
+# Git ignore these files pls :)
+
+.grunt/
+.sass-cache/
+.tmp/
+bower_components/
+dist/
+node_modules/
+src/tests/
+src/themes/*
+!src/themes/default/
+tmp/
+
+*.css
+*.log
+
+.DS_Store
+.tutankhamun
+Thumbs.db

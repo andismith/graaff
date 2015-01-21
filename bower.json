@@ -1,0 +1,26 @@
+{
+  "name" : "MINI Calculator",
+  "version": "0.1",
+  "dependencies" : {
+    "jquery" : "latest",
+    "modernizr" : "latest",
+    "picturefill" : "latest"
+  },
+  "install" : {
+    "path" : {
+      "css": "src/default/assets/css/vendors/",
+      "js": "src/default/assets/js/vendors/"
+    },
+    "sources" : {
+      "jquery" : [
+        "bower_components/jquery/dist/jquery.js"
+      ],
+      "modernizr" : [
+        "bower_components/modernizr/modernizr.js"
+      ],
+      "picturefill" : [
+        "bower_components/picturefill/dist/modernizr.js"
+      ]
+    }
+  }
+}

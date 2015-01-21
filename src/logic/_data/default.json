@@ -1,0 +1,98 @@
+{
+  "title": "Andi Smith",
+  "url": "http://www.andismith.com",
+  "meta": {
+    "description": "",
+    "keywords": ""
+  },
+  "settings": {
+    "theme": "default",
+    "date": {
+      "format": "%e %B %Y"
+    },
+    "pagination": {
+      "length": 10
+    },
+    "sidebars": {
+      "length": 5
+    },
+    "moreLink": "Read more",
+    "footer": {
+      "powered": "Powered by <a href=\"https://github.com/andismith/graaff\">Graaff</a>"
+    }
+  },
+  "share": [
+    {
+      "title": "Facebook",
+      "class": "facebook",
+      "url": "https://www.facebook.com/sharer/sharer.php?u={url}"
+    },{
+      "title": "Google +",
+      "class": "google-plus",
+      "url": "https://plus.google.com/share?url={url}"
+    },{
+      "title": "LinkedIn",
+      "class": "linkedin",
+      "url": "http://www.linkedin.com/shareArticle?url={url}"
+    },{
+      "title": "Reddit",
+      "class": "reddit",
+      "url": "http://www.reddit.com/submit?url={url}"
+    },{
+      "title": "StumbleUpon",
+      "class": "stumble-upon",
+      "url": "http://www.stumbleupon.com/submit?url={url}&title={data.title}"
+    },{
+      "title": "Twitter",
+      "class": "twitter",
+      "url": "http://twitter.com/home?status={data.title} by {data.author} - {url}"
+    }
+  ],
+  "sidebars": {
+    "main": [{
+      "title": "About",
+      "description": "Graaff makes creating content-rich static sites easy."
+    },{
+      "title": "Latest",
+      "section": "News",
+      "description": "The latest posts",
+      "type": "list",
+      "sort": "posted",
+      "sortOrder": "desc",
+      "start": 0,
+      "length": 5,
+      "display": "title"
+    }]
+  },
+  "author": {
+    "name" : "Andi Smith",
+    "url": "http://www.andismith.com/",
+    "twitter": {
+      "handle": "@andismith",
+      "url": "http://www.twitter.com/andismith"
+    },
+    "github": {
+      "handle": "andismith",
+      "url": "https://github.com/andismith"
+    },
+    "lanyrd": {
+      "handle": "andismith",
+      "url": "http://lanyrd.com/profile/andismith/"
+    },
+    "googleplus": {
+      "handle": "AndiSmithUK",
+      "url": "https://plus.google.com/+AndiSmithUK/?rel=author"
+    },
+    "linkedin": {
+      "handle": "andismith",
+      "url": "http://uk.linkedin.com/in/andismith/"
+    },
+    "instagram": {
+      "handle": "andismith",
+      "url": "http://instagram.com/andismith"
+    }
+  },
+  "analytics": {
+    "id": ""
+  }
+}

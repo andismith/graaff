@@ -1,0 +1,40 @@
+// Graff
+// 
+// Sass Grid
+// 
+// Author: Andi Smith
+// - Twitter: @andismith
+// - URL: http://www.andismith.com/
+
+// configuration
+$maxColumns: 12;
+$gutter: 2%;
+
+// get the width of the column
+@function get-col-width($columns) {
+  $one-col: (100% - ($gutter * ($maxColumns - 1))) / $maxColumns;
+  @return ($one-col * $columns) + ($gutter * ($columns - 1));
+}
+
+@mixin row() {
+  overflow: auto;
+  width: auto;
+}
+
+// span columns
+// $columns - number of columns to span
+// $parent - number of columns the parent spans
+@mixin span-cols($columns: 1, $parent: $maxColumns) {
+  $parent-size: get-col-width($parent);
+  $child-size: get-col-width($columns);
+
+  float: left;
+  margin-right: ($gutter / $parent-size) * 100%;
+  width: ($child-size / $parent-size) * 100%;
+
+  //&:nth-child(#{$parent/$columns}n), - not supported by libsass yet
+  &:last-child {
+    margin-right: 0;
+  }
+}
+

@@ -1,0 +1,63 @@
+{{!--
+  Graaff
+  Header
+--}}
+{{setBuildPath buildPaths.dest}}
+{{setPagePath this.dirname}}
+{{setSiteData siteData}}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title>{{#if this.page.data.title }}{{ this.page.data.title }} - {{/if}}{{ siteData.title }}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+{{> meta-seo }}
+
+{{> meta-facebook }}
+
+{{> meta-twitter }}
+
+{{> meta-google-plus }}
+
+    <link rel="icon" href="/favicon.ico" />
+
+    {{#if siteData.settings.fontsPrefetch}}
+    <link rel="dns-prefetch" href="{{siteData.settings.fontsPrefetch}}" />
+    {{/if}}
+    {{#if siteData.analytics.id}}
+    <link rel="dns-prefetch" href="//www.google-analytics.com/">
+    {{/if}}
+
+    <!-- build:js {{getResource 'assets/js/vendors/modernizr.custom.min.js' }} -->
+    <script src="{{getResource 'assets/js/vendors/modernizr.custom.min.js' }}"></script>
+    <!-- endbuild -->
+
+    <!-- build:css {{getResource 'assets/css/main.min.css' }} -->
+    <link rel="stylesheet" href="{{getResource 'assets/css/main.css' }}" />
+    <!-- endbuild -->
+
+    {{{ siteData.settings.fonts }}}
+
+    {{#if this.page.data.css }}
+    <link rel="stylesheet" href="{{getResource this.page.data.css }}" />
+    {{/if}}
+
+    {{#if siteData.rss}}
+    <link rel="alternate" type="application/rss+xml" href="{{getResource siteData.rss }}" title="Latest posts" />
+    {{/if}}
+
+  </head>
+  <body class="{{ chain 'lowercase' 'hyphenate' this.page.data.section }}">
+
+    <header id="top" class="header">
+      <h1 class="alpha"><a href="{{getUrl '/' }}">{{{ siteData.title }}}</a></h1>
+      {{#isnt siteData.subtitle ''}}
+      <h2 class="beta">{{ siteData.subtitle }}</h2>
+      {{/isnt}}
+    </header>

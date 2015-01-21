@@ -1,0 +1,28 @@
+/*
+  Graff
+  Theme: Default
+  Description: Default Graff theme, modify to your heart's content!
+  Author: Andi Smith
+  Version: 1
+  License: MIT
+ */
+
+// Note: This theme uses BEM (block, element, modifier).
+// For a simple introduction to BEM, see:
+// http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/
+
+@import 'helpers/vars';
+
+@import 'helpers/normalize';
+@import 'helpers/grid';
+@import 'helpers/icons';
+@import 'helpers/social';
+
+@import 'main/common';
+@import 'main/layout';
+
+@import 'modules/block';
+@import 'modules/header';
+@import 'modules/navigation';
+@import 'modules/social';
+@import 'modules/footer';

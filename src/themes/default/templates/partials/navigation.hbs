@@ -1,0 +1,19 @@
+{{!--
+  Graaff
+  Navigation bar
+--}}
+<nav class="navigation">
+  <ul>
+    {{#getPosts
+      nav
+      sort='{
+        "field": "nav.order",
+        "order": "asc"
+      }'
+    }}
+      {{#if data.nav.name}}
+      <li class="sections"><a href="{{ url }}" class="{{chain "lowercase" "hyphenate" data.nav.name}}{{#is ../../this.page.data.section data.nav.name}} selected{{/is}}"><span>{{ data.nav.name }}</span></a>
+      {{/if}}
+    {{/getPosts}}
+  </ul>
+</nav>

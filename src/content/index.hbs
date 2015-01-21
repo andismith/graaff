@@ -1,0 +1,34 @@
+---
+title: Home
+section: Blog
+layout: list.hbs
+nav:
+  name: News
+  order: 10
+  url: /
+page: true
+
+hideContents: false
+hideTitle: true
+paginate: true
+page: 1
+notContentBlock: true
+
+list:
+  section: News
+  start: 0
+  length: <%= siteData.settings.pagination.length %>
+  sort: posted
+  sortOrder: desc
+
+sidebar: <%= siteData.sidebars.main %>
+
+---
+
+<section class="highlights">
+{{#with highlights}}
+  {{#each this}}
+    {{>highlight-block}}
+  {{/each}}
+{{/with}}
+</section>

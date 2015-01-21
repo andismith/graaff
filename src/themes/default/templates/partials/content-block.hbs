@@ -1,0 +1,57 @@
+{{!--
+  Graaff
+  Content Block
+
+  Content blocks make up the majority of the site. They are used for posts and lists.
+--}}
+<article class="content-block">
+  <header class="content-block__header">
+    {{ ../../this.buildPaths.dest }}
+    <h1 class="alpha"><a href="{{url}}/">{{ title }}</a></h1>
+  </header>
+
+  <section class="content-block__main">
+    {{#exists
+      values='[
+        "{data.posted}",
+        "{data.category}",
+        "{data.hasShare}"
+      ]'
+    }}
+      <div class="content-block__info">
+        {{#if data.posted }}
+        <div class="content-block__info-timestamp"><time datetime="{{data.posted}}">{{formatDate data.posted siteData.settings.date.format}}</time></div>
+        {{/if }}
+        {{#if data.category }}
+        <div class="content-block__info-category">
+          <a href="/{{chain "lowercase" "hyphenate" data.section}}/category/{{lowercase data.category }}/">
+          {{ data.category }}
+          </a>
+        </div>
+        {{/if}}
+        {{>share-links}}
+      </div>
+      {{else}}
+    {{/exists}}
+
+    <div class="content-block__body">
+    {{#markdown}}
+      {{{pageContent}}}
+    {{/markdown}}
+
+    {{#if data.screenshots}}
+      <div class="content-block__screenshot-gallery">
+        {{#each data.screenshots}}
+          <div class="content-block__screenshot"><a href="{{ insertSuffix this '-large' }}" data-feature="overlay"><img src="{{ insertSuffix this '-small' }}" /></a></div>
+        {{/each}}
+      </div>
+    {{/if}}
+
+      <div class="content-block__info">
+        {{#if author }}
+        <div class="content-block__info-author">By {{#if authorLink }}<a href="{{ authorLink }}">{{/if}}{{ author }}{{#if authorLink }}</a>{{/if}}</div>
+        {{/if }}
+      </div>
+    </div>
+  </section>
+</article>

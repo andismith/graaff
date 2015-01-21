@@ -1,0 +1,16 @@
+// Graff
+// Site layout using ._grid.scss
+
+.wrapper {
+  @include row();
+}
+
+@media screen and (min-width: $breakpoint-wide) {
+	.main {
+	  @include span-cols(8);
+	}
+
+	.sidebar {
+	  @include span-cols(4);
+	}
+}

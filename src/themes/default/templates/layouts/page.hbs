@@ -1,0 +1,31 @@
+{{!--
+  Graaff
+  Post layout
+--}}
+{{>site-header}}
+{{>page-header}}
+{{>navigation}}
+<div class="wrapper">
+  <div class="container">
+    <main class="main">
+{{#getPosts
+  post
+  filter='{
+    "title": "{title}",
+    "section": "{section}",
+    "posted": "{posted}"
+  }'
+  page='{
+    "start": 0,
+    "length": 1
+  }'
+}}
+{{>content-block}}
+{{/getPosts}}
+    </main>
+{{#unless hideSidebar}}
+{{>sidebar this}}
+{{/unless}}
+  </div>
+</div>
+{{>site-footer}}

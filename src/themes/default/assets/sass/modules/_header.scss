@@ -1,0 +1,21 @@
+// Graff
+// 
+// Site header
+
+.header {
+  background: $background-color;
+  padding: $spacing/2 $spacing;
+
+  .alpha {
+    font-size: 3.0em;
+    line-height: 1;
+
+    a {
+      color: $primary-color;
+    }
+  }
+
+  .beta {
+    font-size: 1.2em;
+  }
+}

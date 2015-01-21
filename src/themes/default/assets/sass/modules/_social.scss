@@ -1,0 +1,37 @@
+// Graff
+// 
+// Site social icons
+
+.social {
+  float: right;
+  font-size: 1.2em;
+
+  span {
+    display: none;
+  }
+}
+
+.social__icon--facebook:after {
+  color: $facebook-color;
+  @include icon($icon-facebook);
+}
+
+.social__icon--google-plus:after {
+  color: $google-plus-color;
+  @include icon($icon-google-plus);
+}
+
+.social__icon--twitter:after {
+  color: $twitter-color;
+  @include icon($icon-twitter);
+}
+
+.social__icon--reddit:after {
+  color: $reddit-color;
+  @include icon($icon-reddit);
+}
+
+.social__icon--stumble-upon:after {
+  color: $stumble-upon-color;
+  @include icon($icon-stumble-upon);
+}

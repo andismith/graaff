@@ -1,0 +1,54 @@
+{{!--
+  Graaff
+  Sidebar
+  Don't need a sidebar?
+  - Per page: Use hideSidebar: true
+  - Sitewide: Remove from list.hbs and page.hbs
+--}}
+<aside class="sidebar">
+
+{{#each sidebar}}
+  <section class="content-block">
+    <h1 class="gamma">{{title}}</h1>
+
+    <p>{{description}}</p>
+
+    {{#is type "list"}}
+      {{#getPosts
+        ../../post
+        filter='{
+          "section": "{section}"
+        }'
+        sort='{
+          "field": "{sort}",
+          "order": "{sortOrder}"
+        }'
+        page='{
+          "start": "{start}",
+          "length": "{length}"
+        }'
+      }}
+
+      {{#if firstOnPage}}
+      <ul>
+      {{/if}}
+        <li><a href="{{url}}/">
+          {{#is ../../display "posted"}}
+            {{formatDate data.posted ../../../../siteData.settings.date.format}}
+          {{else}}
+            {{#is ../../display "section"}}
+              {{this.data.section}}
+            {{else}}
+              {{this.data.title}}
+            {{/is}}
+          {{/is}}
+        </a></li>
+      {{#if lastOnPage}}
+      </ul>
+      {{/if}}
+      {{/getPosts}}
+    {{/is}}
+  </section>
+{{/each}}
+
+</aside>

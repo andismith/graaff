@@ -1,0 +1,11 @@
+{{!--
+  Graaff
+  Social media sharing
+--}}
+<div class="social">
+  {{#each siteData.share}}
+  <a href="{{replaceValues ../this url true}}"
+    class="social__icon--{{this.class}}"
+    title="Share to {{this.title}}"><span>Share to {{this.title}}</span></a>
+  {{/each}}
+</div>

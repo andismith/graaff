@@ -1,0 +1,11 @@
+{{!--
+  Graaff
+  Twitter META data
+--}}
+{{#if this.page.twitterCard }}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="{{ siteData.social.networks.twitter.username }}" />
+    <meta name="twitter:title" content="{{ title }}" />
+    <meta name="twitter:description" content="{{#if summary}}{{ summary }}{{else}}{{ siteData.meta.description }}{{/if}}" />
+    {{#if this.page.data.shareImage}}<meta name="twitter:image:src" content="{{ siteData.url }}/{{ getResource this.page.data.shareImage }}" />{{/if}}
+{{/if}}

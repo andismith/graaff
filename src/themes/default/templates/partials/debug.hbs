@@ -1,0 +1,42 @@
+{{!--
+  Graaff
+  Debug
+
+  Quick debug access. Include in any getPosts instance with {{>debug}}
+--}}
+<div class="block debug">
+  <h1>Debug</h1>
+<p>{{#exists values="{data.title}"}}
+Title: {{data.title}}<br />
+{{/exists}}
+{{#exists values="{url}"}}
+URL: {{url}}<br />
+{{/exists}}
+{{#exists values="{current}"}}
+This Page URL: {{current}}<br />
+{{/exists}}
+{{#exists values="{data.section}"}}
+Section: {{data.section}}<br />
+{{/exists}}
+{{#exists values="{data.posted}"}}
+Posted: {{data.posted}}<br />
+{{/exists}}
+{{#exists values="{index}"}}
+Index: {{index}}<br />
+{{/exists}}
+{{#exists values="{total}"}}
+Total: {{total}}<br />
+{{/exists}}
+{{#exists values="{first}"}}
+First: {{first}}<br />
+{{/exists}}
+{{#exists values="{last}"}}
+Last: {{last}}<br />
+{{/exists}}
+{{#exists values="{firstOnPage}"}}
+First On Page: {{firstOnPage}}<br />
+{{/exists}}
+{{#exists values="{lastOnPage}"}}
+Last On Page: {{lastOnPage}}<br />
+{{/exists}}</p>
+</div>

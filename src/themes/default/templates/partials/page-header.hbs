@@ -1,0 +1,14 @@
+{{!--
+  Graaff
+  Individual page header content
+--}}
+{{#if this.page.data.header}}
+<div class="page-header" {{#if this.page.data.header.image}}style="background-image: url({{this.page.data.header.image}})"{{/if}}>
+  <div class="container">
+    <div class="box-out block content-block">
+      <h1 class="alpha">{{{this.page.data.header.title}}}</h1>
+      {{{this.page.data.header.description}}}
+    </div>
+  </div>
+</div>
+{{/if}}

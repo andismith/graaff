@@ -1,0 +1,23 @@
+---
+title: Welcome Category
+section: Blog
+layout: list.hbs
+page: true
+
+hideContents: true
+hideTitle: false
+paginate: true
+page: 1
+notContentBlock: true
+
+list:
+  section: News
+  category: Welcome
+  start: 0
+  length: <%= siteData.settings.pagination.length %>
+  sort: posted
+  sortOrder: desc
+
+sidebar: <%= siteData.sidebars.main %>
+
+---

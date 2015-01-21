@@ -1,0 +1,44 @@
+{
+  "title": "Graaff",
+  "subtitle": "Static Sites Assembled",
+  "url": "http://www.andismith.com",
+  "meta": {
+    "description": "Graaff makes building static sites easy.",
+    "keywords": "graaff, assemble, andi, smith"
+  },
+  "settings": {
+    "fonts": "<link href=\"http://fonts.googleapis.com/css?family=Open+Sans:300italic,600italic,300,600\" rel=\"stylesheet\" />",
+    "fontsPrefetch": "//fonts.googleapis.com",
+    "theme": "default"
+  },
+  "author": {
+    "name" : "Andi Smith",
+    "twitter": {
+      "handle": "@andismith",
+      "url": "http://www.twitter.com/andismith"
+    },
+    "github": {
+      "handle": "andismith",
+      "url": "https://github.com/andismith"
+    },
+    "lanyrd": {
+      "handle": "andismith",
+      "url": "http://lanyrd.com/profile/andismith/"
+    },
+    "googleplus": {
+      "handle": "AndiSmithUK",
+      "url": "https://plus.google.com/+AndiSmithUK/?rel=author"
+    },
+    "linkedin": {
+      "handle": "andismith",
+      "url": "http://uk.linkedin.com/in/andismith/"
+    },
+    "instagram": {
+      "handle": "andismith",
+      "url": "http://instagram.com/andismith"
+    }
+  },
+  "analytics": {
+    "id": ""
+  }
+}

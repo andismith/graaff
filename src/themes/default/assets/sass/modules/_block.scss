@@ -1,0 +1,61 @@
+/*
+.block {}
+.block__element {}
+.block--modifier {}
+ */
+
+.content-block {
+  border-bottom: solid $spacing/4 $primary-color;
+  margin: $spacing;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &__header {
+    margin-bottom: $spacing/2;
+  }
+
+  &__main {
+
+  }
+
+  &__info {
+    @include row();
+    margin-bottom: $spacing;
+  }
+
+  &__info-timestamp,
+  &__info-category,
+  &__info-author {
+    float: left;
+    margin-right: $spacing;
+  }
+
+  &__info-timestamp:before,
+  &__info-category:before {
+    color: $text-color;
+    margin-right: 5px;
+  }
+
+  &__info-timestamp:before {
+    @include icon($icon-calendar);
+  }
+
+  &__info-category:before {
+    color: $text-color;
+    @include icon($icon-tags);
+  }
+
+  &__screenshot-gallery {
+
+  }
+
+  &__screenshot {
+
+  }
+
+  &:first-child .content-block__header {
+    border-top: 0;
+  }
+}

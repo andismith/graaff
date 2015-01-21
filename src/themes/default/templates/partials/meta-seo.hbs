@@ -1,0 +1,11 @@
+{{!--
+  Graaff
+  META data
+--}}
+    <meta name="author" content="{{#if author}}{{ author }}{{ else }}{{ siteData.author.name }}{{/if}}" />
+    <meta name="description" content="{{#if summary}}{{ summary }}{{else}}{{ siteData.meta.description }}{{/if}}" />
+    <meta name="keywords" content="{{ siteData.meta.keywords }}" />
+
+    <meta name="generator" content="Graaff" />
+
+    <meta name="robots" content="NOODP" />

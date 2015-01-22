@@ -17,7 +17,7 @@ To get started quickly:
 * `git clone https://github.com/andismith/graaff .` to clone in to current directory
 * `npm install`
 * If you don't have Grunt CLI, `npm install -g grunt-cli`
-* `mv _content content`
+* `cp -r _content content`
 * `grunt`
 
 Graaff's files are split in to three main folders:

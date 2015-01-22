@@ -27,8 +27,6 @@ module.exports.register = function (Handlebars) {
       targetPage = targetPage.replace(buildPath, '');
     }
 
-    console.log(currentPage, targetPage, path.relative(currentPage, targetPage));
-
     return path.relative(currentPage, targetPage);
   };
 
@@ -264,7 +262,7 @@ module.exports.register = function (Handlebars) {
         // useful page information
         page.title = page.data.title || siteData.title;
         page.summary = page.data.summary || getFirstCharacters(page) || siteData.description;
-        page.author = page.data.author || siteData.author || '';
+        page.author = page.data.author || siteData.author.name || '';
         page.authorLink = page.data.authorLink || siteData.author.url || '';
         page.pageContent = getExcerpt(page, siteData);
         page.url = getUrl(page.dirname);

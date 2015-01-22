@@ -227,12 +227,11 @@ module.exports.register = function (Handlebars) {
    * @param collection object    The filtered pages collection
    * @param rangeStart number    The start of the range we want to get
    * @param rangeEnd   number    The end of the range we want to get
-   * @param siteData   object    An additional data object we wish to have access to
-   *                             from our pages.
+   * @param originalCollection   object   The original collection of pages
    * @param options    object    The Handlebar helper options
    * @return           object    The page collection in range.
    */
-  function getPagesInRange(collection, rangeStart, rangeEnd, options) {
+  function getPagesInRange(collection, rangeStart, rangeEnd, originalCollection, options) {
     var count = 0;
     var i = 0;
     var l = 0;
@@ -269,6 +268,7 @@ module.exports.register = function (Handlebars) {
         page.fullUrl = siteData.url + '/' + getUrl(page.dirname);
         page.pathUrl = page.dirname;
         page.currentPage = Handlebars.helpers.getPagePath(); // horrible, but can't see another way
+        page.collection = originalCollection;
 
         result += options.fn(page);
       }
@@ -409,7 +409,7 @@ module.exports.register = function (Handlebars) {
       rangeStart = properties.start * properties.length;
       rangeEnd = rangeStart + properties.length;
 
-      return getPagesInRange(pages, rangeStart, rangeEnd, options);
+      return getPagesInRange(pages, rangeStart, rangeEnd, collection, options);
 
     } else {
       // debug

@@ -46,12 +46,12 @@
         {{/each}}
       </div>
     {{/if}}
+    </div>
 
-      <div class="content-block__info">
-        {{#if author }}
-        <div class="content-block__info-author">By {{#if authorLink }}<a href="{{ authorLink }}">{{/if}}{{ author }}{{#if authorLink }}</a>{{/if}}</div>
-        {{/if }}
-      </div>
+    <div class="content-block__info">
+      {{#if author }}
+      <div class="content-block__info-author">By {{#if authorLink }}<a href="{{ authorLink }}">{{/if}}{{ author }}{{#if authorLink }}</a>{{/if}}</div>
+      {{/if }}
     </div>
   </section>
 </article>

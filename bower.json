@@ -1,5 +1,5 @@
 {
-  "name" : "MINI Calculator",
+  "name" : "Graaff",
   "version": "0.1",
   "dependencies" : {
     "jquery" : "latest",

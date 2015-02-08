@@ -20,7 +20,7 @@ To get started quickly:
 * If you don't have Grunt CLI, you'll need to install it with `npm install -g grunt-cli`
 * Make a copy of the default content folder to get you started `cp -r _content content`
 * Run Grunt with the command `grunt`
-* By default, Graaff will be available at (http://localhost:3000/)
+* By default, Graaff will be available at [localhost:3000](http://localhost:3000/)
 
 Graaff's files are split in to three main folders, found in the `src` folder:
 

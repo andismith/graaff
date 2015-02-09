@@ -1,0 +1,26 @@
+---
+title: Home
+section: Home
+layout: list.hbs
+nav:
+  name: Home
+  order: 10
+  url: /
+page: true
+
+hideContents: false
+hideTitle: true
+paginate: true
+page: 1
+notContentBlock: true
+
+list:
+  section: Home
+  start: 0
+  length: <%= siteData.settings.pagination.length %>
+  sort: posted
+  sortOrder: desc
+
+sidebar: <%= siteData.sidebars.main %>
+
+---

@@ -1,0 +1,28 @@
+---
+title: The Graaff Handbook
+section: Handbook
+layout: multi-list.hbs
+nav:
+  name: Handbook
+  order: 100
+page: true
+
+hideContents: false
+paginate: true
+page: 1
+notContentBlock: true
+
+list:
+  section: Handbook
+  start: 0
+  length: <%= siteData.settings.pagination.length %>
+  sort: order
+  sortOrder: asc
+
+sidebar: <%= siteData.sidebars.main %>
+
+---
+
+<section class="content-block">
+  <p>Welcome to the Handbook!</p>
+</section>

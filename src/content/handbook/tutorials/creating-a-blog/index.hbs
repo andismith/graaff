@@ -1,0 +1,32 @@
+---
+title: Creating a Blog
+section: Tutorials
+author: Andi Smith
+post: true
+---
+
+## Initial Setup
+
+1. Install Graaff using the [instructions](../../getting-started/installation)
+1. We're going to build a blog from scratch, so delete the contents of `src/content` folder
+1. Within the `src/content` folder create a folder called `_data`
+1. Copy the file `logic/_data/default.json` in to your `content/_data` folder and rename it `site.json`
+1. Edit the file and change the title of your site to the name of your blog.
+
+## Creating the Index Page
+1. Create a file called `index.hbs` within `src/content`
+1. Give it the following parameters:
+	---
+	title: Home
+	section: Blog
+	layout: list.hbs
+	page: true
+
+	list:
+	  section: Blog
+	  start: 0
+	  length: <%= siteData.settings.pagination.length %>
+	  sort: posted
+	  sortOrder: desc
+	---
+3.  

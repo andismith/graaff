@@ -1,0 +1,75 @@
+---
+title: How Graaff Works
+section: Getting Started
+order: 20
+author: Andi Smith
+post: true
+---
+
+Graaff comprises of helpers and logic to make the content you'd normally insert in to Assemble more accessible to your templates, whilst also being configured to allow easy theming.
+
+Graaff takes the files found in the `src` folder and compiles them in to `dist`. The paths used in the `dist` folder are relative, so your files can be placed in any location and still work together.
+
+Within the `src` folder, Graaff's files have been split in to three main folders:
+
+* `content` - where our posts and pages are created.
+* `themes` - where we can style our site.
+* `logic` - where the magic happens.
+
+## Content
+
+Found at: `src/content`
+
+This is where your pages and posts will live. Posts and pages are created in the same way.
+
+Every post on your page is a `index.hbs` file and should be given it's own container folder. By providing a container folder we can collate all of the associated assets together and use the folder name for the posts path rather than require a `.html` extension.
+
+The directory structure created in the `content` folder will mimic the structure of your URLs, so if you create the file `src/content/about/index.hbs` the URL will be `http://localhost:3000/about/`.
+
+Content files can be opened in any code editor, and comprise of two parts:
+
+### Parameters
+
+The parameters for your page are written in YAML, which stands for Yet Another Markup Language.
+
+The list of parameters for your site are listed at the top of the file and contained with a pair of triple hyphens. A typical page may have the following parameters:
+
+	---
+	title: How Graaff Works
+	section: Getting Started
+	order: 20
+	author: Andi Smith
+	post: true
+	posted: 2020-20-20
+	---
+
+The basic parameters you can set for each page are:
+
+* `title`: The title of the page **(required)**
+* `section`: The section the page is contained within (so we can find it in lists) **(required)**
+* `author`: The name of the author
+* `post`: Set this to true to contain it within our list of posts **(required)**
+* `posted`: The date of the post in YYYY-MM-DD format
+* `published`: Set this to false to remove a post from your site without deleting it.
+
+### Body Content
+
+This is the content of your post. Whatever is written here will form the body of your post. It can be created in either Markdown or, for more control, HTML.
+
+## Themes
+
+Found at: `src/themes`
+
+Themes are where you can customise the look and feel of your site. Always start your theme by cloning the default directory to make a new theme and then you can get creative!
+
+You'll need to update the theme settings in `src/content/_data/site.json` to point to your new theme. Open the file in any code editor and then change the value of `settings &gt; theme` from `default` to the name of your theme folder.
+
+Themes are split in to several folders:
+
+* `assets` contains any fonts, JavaScript and Sass stylesheets for your site. Editing the Sass files will create new CSS files, please do not edit any CSS files directly as you will lose your changes once `grunt` is re-run! If you are unfamiliar with Sass, you can write normal CSS in the `.scss` files.
+
+* `templates` contains all of the HTML and Handlebars templates used to generate your site. You can modify these files to change the overall structure and to change the output logic to your requirements.
+
+## Logic
+
+This is the logic behind Graaff. There's not a lot in here, as we're using Grunt and Assemble to do most of the hard work. Most users will not need to change the files in this directory.

@@ -47,6 +47,28 @@
       </div>
     {{/if}}
     </div>
+    
+    {{#if data.list}}
+    <ul class="content-block__list">
+    {{#getPosts
+      collection
+      filter='{
+        "section": "{data.list.section}",
+        "category": "{data.list.category}"
+      }'
+      sort='{
+        "field": "{data.list.sort}",
+        "order": "{data.list.sortOrder}"
+      }'
+      page='{
+        "start": "{data.list.start}",
+        "length": "{data.list.length}"
+      }'
+    }}
+      <li><a href="{{url}}">{{title}}</a></li>
+    {{/getPosts}}
+    </ul>
+    {{/if}}
 
     <div class="content-block__info">
       {{#if author }}

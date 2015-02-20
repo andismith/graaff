@@ -7,7 +7,7 @@ Thanks for checking out our project! It's not *quite* ready to use yet, so pleas
 
 ## Getting Started
 
-Detailed information about getting started can be found on the Graaff website (coming soon).
+Detailed information about getting started can be found on the [Graaff website](http://andismith.github.io/graaff).
 
 To get started quickly:
 

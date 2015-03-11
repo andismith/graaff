@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
     ASSEMBLE: 'templates/',
     ASSETS: 'assets/',
-    CONTENT: 'content/',
+    CONTENT: '_content/', // TODO: this should be 'content/'
     CSS: 'assets/css/',
     DATA: '_data/',
     IMG: 'assets/img/',
@@ -18,6 +18,7 @@ module.exports = function (grunt) {
     JS: 'assets/js/',
     SASS: 'assets/sass/',
     TESTS: 'tests/',
+    TMP: 'tmp/'
   };
   var PORT = 3000;
 
@@ -46,17 +47,24 @@ module.exports = function (grunt) {
         }],
         data: PATHS.SRC + PATHS.CONTENT + PATHS.DATA + '{,*/}*.json',
         helpers: PATHS.SRC + PATHS.LOGIC + 'helpers.js',
-        layout: 'page.hbs', // default
-        layoutdir: PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + 'layouts/',
-        partials: PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + 'partials/{,*/}*.hbs',
         siteData: '<%= siteData %>'
       },
       posts: {
+        options: {
+          layout: 'page.hbs', // default
+          layoutdir: PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + 'layouts/',
+          partials: PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + 'partials/{,*/}*.hbs'
+        },
         files: [{
           cwd: PATHS.SRC + PATHS.CONTENT,
           dest: PATHS.DEST,
           expand: true,
           src: '**/*.hbs'
+        }, {
+          cwd: PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + 'partials/',
+          dest: PATHS.DEST,
+          expand: true,
+          src: 'search-json.hbs'
         }]
       }
     },
@@ -324,6 +332,11 @@ module.exports = function (grunt) {
     jsonlint: {
       // lint our JSON files
       // https://github.com/brandonramirez/grunt-jsonlint
+      search: {
+        src: [
+          PATHS.DEST + 'search.json'
+        ]
+      },
       site: {
         src: [
           PATHS.SRC + PATHS.CONTENT + PATHS.DATA + '{,*/}*.json',
@@ -370,6 +383,14 @@ module.exports = function (grunt) {
         options: {
           strategy: "mobile"
         }
+      }
+    },
+
+    rename: {
+      // assemble won't allow us to use 'ext' to change from HTML to JSON
+      search: {
+        src: PATHS.DEST + 'search-json.html',
+        dest: PATHS.DEST + 'search.json'
       }
     },
 
@@ -478,10 +499,10 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin'
   });
 
-  grunt.registerTask('psi-ngrok', 'Run pagespeed with ngrok', function() {
+  grunt.registerTask('psi-ngrok', 'Run pagespeed with ngrok', function () {
     var done = this.async();
 
-    ngrok.connect(PORT, function(err, url) {
+    ngrok.connect(PORT, function (err, url) {
       if (err !== null) {
         grunt.fail.fatal(err);
         return done();
@@ -499,7 +520,7 @@ module.exports = function (grunt) {
   grunt.registerTask('styles', ['sass', 'autoprefixer:site']);
   grunt.registerTask('scripts', ['jshint', 'copy:scripts', 'copy:vendorScripts', 'modernizr']);
 
-  grunt.registerTask('content', ['jsonlint', 'assemble', 'autoprefixer:content', 'copy:contentImage', 'copy:content']);
+  grunt.registerTask('content', ['jsonlint:site', 'assemble', 'autoprefixer:content', 'copy:contentImage', 'copy:content', 'rename', 'jsonlint:search']);
 
   // concurrent streams
   grunt.registerTask('stream1', ['styles', 'fonts', 'root', 'images', 'scripts']);
@@ -509,7 +530,8 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['clean:dist', 'concurrent:build']);
 
   // compression step including usemin
-  grunt.registerTask('compress', ['useminPrepare', 'concat', 'cssmin', 'uglify', 'filerev', 'usemin', 'clean:useminTidy', 'copy:vendorScripts', 'modernizr', 'htmlmin']);
+  // 'filerev' is currently commented out due to a problem with multiple directories
+  grunt.registerTask('compress', ['useminPrepare', 'concat', 'cssmin', 'uglify', 'usemin', 'clean:useminTidy', 'copy:vendorScripts', 'modernizr', 'htmlmin']);
 
   grunt.registerTask('run', ['connect:dev', 'watch']);
   grunt.registerTask('runContent', ['connect:content', 'watch']);

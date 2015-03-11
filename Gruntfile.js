@@ -8,7 +8,7 @@ module.exports = function (grunt) {
 
     ASSEMBLE: 'templates/',
     ASSETS: 'assets/',
-    CONTENT: '_content/', // TODO: this should be 'content/'
+    CONTENT: 'content/',
     CSS: 'assets/css/',
     DATA: '_data/',
     IMG: 'assets/img/',

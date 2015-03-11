@@ -6,6 +6,9 @@ ext: 'json'
 {
   "posts": [{{#getPosts
     post
+    filter='{
+      "!index": false
+    }'
   }}{
     "title": "{{ title }}"
     , "url": "{{ pathUrl }}"

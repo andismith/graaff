@@ -10,6 +10,7 @@ src/tests/
 tmp/
 
 *.css
+*.css.map
 *.log
 
 .DS_Store

@@ -13,7 +13,7 @@ module.exports.register = function (Handlebars) {
    * @param targetPage  string  The page we want the URL of
    * @return            string  The path to the page we wanted
    */
-  function getUrl (targetPage) {
+  function getUrl(targetPage) {
     var buildPath = Handlebars.helpers.getBuildPath();
     var currentPage = Handlebars.helpers.getPagePath();
     var path = require('path');
@@ -28,7 +28,7 @@ module.exports.register = function (Handlebars) {
     }
 
     return path.relative(currentPage, targetPage);
-  };
+  }
 
   /* Check whether a post is matches a specified filter.
    * Filters can be inclusive, or exclusive (prefixed with a !)
@@ -265,8 +265,8 @@ module.exports.register = function (Handlebars) {
         page.authorLink = page.data.authorLink || siteData.author.url || '';
         page.pageContent = getExcerpt(page, siteData);
         page.url = getUrl(page.dirname);
-        page.fullUrl = siteData.url + '/' + getUrl(page.dirname);
-        page.pathUrl = page.dirname;
+        page.pathUrl = page.dirname.replace('dist', '');
+        page.fullUrl = siteData.url + '/' + page.path;
         page.currentPage = Handlebars.helpers.getPagePath(); // horrible, but can't see another way
         page.collection = originalCollection;
 
@@ -336,7 +336,7 @@ module.exports.register = function (Handlebars) {
    * @param  value     string    The value to lookup - e.g. "{list.sort}" or "title"
    * @return           string    The value found - or the original string
    */
-  Handlebars.registerHelper('getData', function(thisPage, value) {
+  Handlebars.registerHelper('getData', function (thisPage, value) {
     var i = 0;
     var indexOpen = 0;
     var indexClose = 0;
@@ -420,7 +420,7 @@ module.exports.register = function (Handlebars) {
   });
 
   /*
-  
+
    */
   Handlebars.registerHelper('getUrl', function (targetPage) {
     return getUrl(targetPage);

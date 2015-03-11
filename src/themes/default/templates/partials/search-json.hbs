@@ -1,0 +1,16 @@
+---
+title: Search
+layout: blank.hbs
+ext: 'json'
+---
+{
+  "posts": [{{#getPosts
+    post
+  }}{
+    "title": "{{ title }}"
+    , "url": "{{ pathUrl }}"
+    {{#if data.posted }}, "posted": "{{formatDate data.posted siteData.settings.date.format}}"{{/if}}
+    {{#if data.category}}, "category": "{{ data.category }}"{{/if}}
+    {{#if data.tags}}, "tags": "{{ data.tags }}"{{/if}}
+  }{{#unless lastOnPage}},{{/unless}}{{/getPosts}}]
+}

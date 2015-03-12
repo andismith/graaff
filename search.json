@@ -1,0 +1,65 @@
+
+{
+  "posts": [{
+    "title": "getPosts"
+    , "url": "/handbook/developer-reference/get-posts"
+    
+    
+    
+  },{
+    "title": "Developer Reference"
+    , "url": "/handbook/developer-reference"
+    
+    
+    
+  },{
+    "title": "FAQs"
+    , "url": "/handbook/faqs"
+    
+    
+    
+  },{
+    "title": "How Graaff Works"
+    , "url": "/handbook/getting-started/how-graaff-works"
+    
+    
+    
+  },{
+    "title": "Getting Started"
+    , "url": "/handbook/getting-started"
+    
+    
+    
+  },{
+    "title": "Installation"
+    , "url": "/handbook/getting-started/installation"
+    
+    
+    
+  },{
+    "title": "Tutorials"
+    , "url": "/handbook/getting-started/tutorials"
+    
+    
+    
+  },{
+    "title": "Releases"
+    , "url": "/handbook/releases"
+    
+    
+    
+  },{
+    "title": "Learn more about Graaff!"
+    , "url": "/handbook/releases/learn-more-about-graaff"
+    , "posted": "12 January 2015"
+    , "category": "Welcome"
+    
+  },{
+    "title": "Version 1.0.0"
+    , "url": "/handbook/releases/v1.0.0"
+    , "posted": "21 January 2015"
+    , "category": "Release"
+    
+  }]
+}
+

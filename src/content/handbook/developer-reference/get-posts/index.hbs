@@ -1,0 +1,202 @@
+---
+title: getPosts
+section: Developer Reference
+post: true
+order: 10
+
+hideContents: false
+
+---
+
+The core of Graaff is the `getPosts` helper. This powerful helper can retrieve, sort, filter and paginate posts based on either strings, arrays or values of the current page.
+
+The list of parameters for your site are listed at the top of the file and contained with a pair of triple hyphens. Each parameter follows the syntax key: value. A typical page may have the following parameters:
+
+    ---
+    title: getPosts
+    section: Developer Reference
+    post: true
+    ---
+
+For a post to be included in the results, it must have a YAML property/value of 'post: true'.
+
+This page shares examples for how `getPosts` works together with a list of the values it returns.
+
+## Working Example
+
+A typical `getPosts` request may look like this:
+
+    {{#getPosts
+      post
+      filter='{
+        "section": "Developer Reference"
+      }'
+      sort='{
+        "field": "title"
+      }'
+      page='{
+        "start": 0,
+        "length": 10
+      }'
+    }}
+
+Here, we are retreiving a post object based on the following YAML meta data:
+
+* The posts must have a section value of "Developer Reference"
+* The posts should be sorted by title in descending order
+* We want to display the first 10 posts
+
+## Accepted Values
+
+The `getPosts` helper can accept the following values:
+
+### Filter
+
+Filters are defined as:
+
+    filter='{
+      "prop": "value",
+      "!prop2": "value"
+    }'
+
+Properties must match the YAML meta property name (e.g. "section"). Properties can be prefixed with an negation symbol (!) to exclude certain posts. For example:
+
+    filter='{
+      "section": "Blog",
+      "category": "JavaScript",
+      "!category": "jQuery"
+    }'
+
+Values should be specified as the same type as they are defined in the YAML meta data - so numbers and booleans should not be wrapped in quotation marks. For example:
+
+    filter='{
+      "sticky": true,
+      "page": 1
+    }'
+
+Filters can include static values or a value based on the current page's YAML meta data (a dynamic value). For example, if a page has a YAML meta tag value "category": "Blog" we can use the filter:
+
+    filter='{
+      "category": "{category}"
+    }'
+
+And this will retreive all other posts with the same value for this YAML meta property name as the current post.
+
+You can combine these filters to produce powerful queries, such as related posts where you would want to retreive all posts except the current one:
+
+    filter='{
+      "category": "{category}",
+      "!title": "{title}"
+    }'
+
+### Sorting
+
+Sort is defined as:
+
+    sort='{
+      "field": "date",
+      "order": "asc"
+    }'
+
+Where `field` is the YAML meta property name, and `order` is either 'asc' ascending or 'desc' for descending. The default order is descending.
+
+### Page
+
+Page is defined as:
+
+    page='{
+      "start": 0,
+      "length": 10
+    }'
+
+Where `start` is the page number (starting at 0) and `length` is the length of the page. For example, to retreive the first page of 5 posts, the values would be:
+
+    page='{
+      "start": 0,
+      "length": 5
+    }'
+
+This would tell `getPosts` to start at post 0 and continue until the 5th post, which would be at index 4 as the post array is zero-index based.
+
+For example, to retreive a second page of 5 posts, the values would be:
+
+    page='{
+      "start": 1,
+      "length": 5
+    }'
+
+This would tell `getPosts` to start at post 5 (1*5) and continue until the 10th post, which would be at index 9.
+
+## Returned Results
+
+`getPosts` will loop through any matching posts found in the criteria specified, it can be used for single requests as well as multiple posts. The following values are available within the loop:
+
+### Post Title
+`title`
+
+The title of the page, or the site title if not defined.
+
+### Post Content
+`summaryContent`
+
+Either the value of YAML meta property `summary`, or if this is not defined, the page body up until the string `<!--more-->`.
+
+`pageContent`
+
+The content of the page, which varies depending on the page being viewed. If the page being viewed is the page for this post, this is the full content. If the post is being viewed from another page, this is the content up until the string `<!--more-->`.
+
+`fullContent`
+
+The full content of the page.
+
+### Post Author
+`author`
+
+The post `author`, if defined, or the site author.
+
+`authorLink`
+
+The post `authorLink`, if defined, or the site author `url`.
+
+### Post URL
+
+`url`
+
+The post URL, relative to the current page.
+
+`pathUrl`
+
+The post URL, as an absolute path.
+
+### Post Position
+
+`index`
+
+The current index of the post. This is the index value from the complete set of posts disregarding any pagination.
+
+`firstInSet`
+
+Whether this is the first post in the complete collection, ignoring pagination.
+
+`lastInSet`
+
+Whether this is the last post in the complete collection, ignoring pagination.
+
+`firstOnPage`
+
+Whether this is the first post within the current pagination ruleset.
+
+`lastOnPage`
+
+Whether this is the last post within the current pagination ruleset.
+
+### Data
+
+`siteData`
+
+Access to the site data specified in the site.json file.
+
+`collection`
+
+The original collection of posts, before any rules were applied.
+

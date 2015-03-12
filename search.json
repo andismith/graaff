@@ -60,6 +60,36 @@
     , "posted": "21 January 2015"
     , "category": "Release"
     
+  },{
+    "title": "Creating a Blog"
+    , "url": "/handbook/tutorials/creating-a-blog"
+    
+    
+    
+  },{
+    "title": "Deploying to Git"
+    , "url": "/handbook/tutorials/deploying-to-git"
+    
+    
+    
+  },{
+    "title": "Tutorials"
+    , "url": "/handbook/tutorials"
+    
+    
+    
+  },{
+    "title": "Home"
+    , "url": ""
+    
+    
+    
+  },{
+    "title": "Overview"
+    , "url": "/overview"
+    
+    
+    
   }]
 }
 

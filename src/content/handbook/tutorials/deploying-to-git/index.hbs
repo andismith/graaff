@@ -1,0 +1,36 @@
+---
+title: Deploying to Git
+section: Tutorials
+author: Andi Smith
+order: 900
+post: true
+---
+
+You can use Grunt to deploy your site's destination folder to Git quickly and easily.
+
+## Configuration
+
+Configuration for deploying to Git is as simple as changing two values in a JSON file.
+
+First, Open the `src/content/_data` folder of your website. Locate and open `site.json` in a text editor.
+
+Find the property called `git` and modify the `repo` to match your Git repository. Modify the `branch` to match the branch you wish to deploy to. If you're using Github Pages, this will be `gh-pages`.
+
+For example:
+
+    "git": {
+      "repo": "git@github.com:andismith/graaff.git",
+      "branch": "gh-pages"
+    },
+
+## Deploying
+
+On the Terminal or Command Prompt, go to your working directory and type:
+
+`grunt deploy`
+
+You may be asked to authenticate if you haven't used your Git provider for this project before.
+
+Your deployment should complete successfully.
+
+If you are deploying to Github pages, you can check the status of your published site by checking the 'Settings' panel of your Git repository.

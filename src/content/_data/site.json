@@ -1,6 +1,10 @@
 {
   "title": "Graaff",
   "subtitle": "Static Sites Assembled",
+  "git": {
+    "repo": "git@github.com:andismith/graaff.git",
+    "branch": "gh-pages"
+  },
   "url": "http://www.andismith.com",
   "meta": {
     "description": "Graaff makes building static sites easy.",

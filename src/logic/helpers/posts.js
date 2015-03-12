@@ -185,10 +185,10 @@ module.exports.register = function (Handlebars) {
           }
         }
 
-        if (propertyA < propertyB) {
+        if (propertyA < propertyB || typeof propertyA === 'undefined') {
           return -1 * sortOrder;
         }
-        if (propertyA > propertyB) {
+        if (propertyA > propertyB || typeof propertyB === 'undefined') {
           return 1 * sortOrder;
         }
       }
@@ -196,19 +196,20 @@ module.exports.register = function (Handlebars) {
     };
   }
 
-  function getFirstCharacters(thisPage, numChars) {
-    var content = thisPage.page;
-
-    content = content.replace('\n', '').replace('  ', ' ');
-
-    return content.substr(0, numChars);
-  }
-
-  function getExcerpt(thisPage, siteData) {
+  /* Get the content of the page
+   *
+   * @param thisPage   object    The current page
+   * @param siteData   object    The site data
+   * @param forceExcerpt   boolean    Whether to force an excerpt
+   * @return           object    The page collection in range.
+   */
+  function getContent(thisPage, siteData, forceExcerpt) {
+    var isCurrentPage = (getUrl(thisPage.dirname) === '');
     var excerpt = '';
+
     if (thisPage.page &&
       thisPage.page.indexOf('<!--more-->') > -1 &&
-      getUrl(thisPage.dirname) !== '') {
+      (!isCurrentPage || forceExcerpt)) {
 
       excerpt = thisPage.page.split('<!--more-->').shift();
       if (siteData) {
@@ -260,10 +261,13 @@ module.exports.register = function (Handlebars) {
 
         // useful page information
         page.title = page.data.title || siteData.title;
-        page.summary = page.data.summary || getFirstCharacters(page) || siteData.description;
         page.author = page.data.author || siteData.author.name || '';
         page.authorLink = page.data.authorLink || siteData.author.url || '';
-        page.pageContent = getExcerpt(page, siteData);
+
+        page.summaryContent = page.data.summary || getContent(page, siteData, true) || '';
+        page.pageContent = getContent(page, siteData);
+        page.fullContent = page.page;
+
         page.url = getUrl(page.dirname);
         page.pathUrl = page.dirname.replace('dist', '');
         page.fullUrl = siteData.url + '/' + page.path;
@@ -396,14 +400,14 @@ module.exports.register = function (Handlebars) {
       properties.start = Handlebars.helpers.getData(thisPage, properties.start) || 0;
       properties.length = Handlebars.helpers.getData(thisPage, properties.length) || thisPage.siteData.settings.pagination.length;
 
+      pages = getFilteredPages(pages, getFilters(thisPage, options));
+
       // sort our posts
       sort = getSortOptions(thisPage, options);
 
       if (Object.keys(sort).length > 0 && sort.field) {
         pages.sort(sortPages(sort.field, sort.ascOrder));
       }
-
-      pages = getFilteredPages(pages, getFilters(thisPage, options));
 
       // calculate start and end posts.
       rangeStart = properties.start * properties.length;

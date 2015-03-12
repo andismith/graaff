@@ -96,6 +96,27 @@ module.exports = function (grunt) {
       }
     },
 
+    buildcontrol: {
+      options: {
+        dir: PATHS.DEST,
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: '<%= siteData.git.repo %>',
+          branch: '<%= siteData.git.branch %>'
+        }
+      },
+      local: {
+        options: {
+          remote: '../',
+          branch: '<%= siteData.git.branch %>'
+        }
+      }
+    },
+
     clean: {
       // cleans out files from the specified folders
       // https://github.com/gruntjs/grunt-contrib-clean
@@ -444,7 +465,7 @@ module.exports = function (grunt) {
       assemble: {
         expand: true,
         files: [PATHS.SRC + '<%= theme %>' + PATHS.ASSEMBLE + '**/*.hbs', PATHS.SRC + PATHS.CONTENT + '**/*.hbs'],
-        tasks: 'newer:assemble'
+        tasks: ['newer:assemble', 'rename', 'jsonlint:search']
       },
       assembleHelpers: {
         expand: true,
@@ -495,6 +516,7 @@ module.exports = function (grunt) {
   });
 
   require('jit-grunt')(grunt, {
+    buildcontrol: 'grunt-build-control',
     sass: 'libsass',
     useminPrepare: 'grunt-usemin'
   });
@@ -548,5 +570,8 @@ module.exports = function (grunt) {
   // task for build server
   grunt.registerTask('production', ['build', 'compress']);
   grunt.registerTask('prod', 'production');
+
+  // task for deployment to gh-pages
+  grunt.registerTask('deploy', ['prod', 'buildcontrol']);
 
 };

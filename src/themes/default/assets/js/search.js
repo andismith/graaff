@@ -126,9 +126,9 @@
 
     // check we have a valid search and data to search through
     if (currentSearch && currentSearch.length >= MIN_CHARS && hasSearchData()) {
-      l = (searchData.length < MAX_RESULTS) ? searchData.length : MAX_RESULTS;
+      l = searchData.length;
 
-      for (; i < l; i++) {
+      for (; (i < l && results.length < MAX_RESULTS); i++) {
         page = searchData[i];
         for (prop in page) {
           if (page.hasOwnProperty(prop)) {

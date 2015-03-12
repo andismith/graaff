@@ -1,6 +1,10 @@
 {
   "title": "Andi Smith",
   "url": "http://www.andismith.com",
+  "git": {
+    "repo": "git@github.com:andismith/graaff.git",
+    "branch": "gh-pages"
+  },
   "meta": {
     "description": "",
     "keywords": ""
